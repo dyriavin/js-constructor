@@ -1,7 +1,9 @@
-import {col, row} from "./utils";
+import {col, row, css} from "./utils";
 
 function title(block) {
-    return row(col(`<h1>${block.value}</h1>`))
+    const {tag, style} = block.options
+
+    return row(col(`<${tag}>${block.value}</${tag}}>`), css(style))
 }
 
 function text(block) {
@@ -9,8 +11,8 @@ function text(block) {
 }
 
 function columns(block) {
-    const html = block.value.map(item => col(item))
-    return row(html.join(''))
+    const html = block.value.map(col).join('')
+    return row(html)
 }
 
 function image(block) {
@@ -18,5 +20,8 @@ function image(block) {
 }
 
 export const templates = {
-    title, text, image, columns
+    title,
+    text,
+    image,
+    columns
 }
