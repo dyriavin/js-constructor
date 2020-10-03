@@ -1,15 +1,6 @@
 import {model} from "./model";
 import './styles/main.css';
-import {Site} from './classes/site'
-import {Sidebar} from "./classes/sidebar";
 
-const site = new Site('#site')
-site.render(model)
+import {App} from "./classes/app";
 
-const updateCallback = newBlock => {
-    model.push(newBlock)
-    site.render()
-}
-
-new Sidebar('#panel', updateCallback)
-
+new App(model)
